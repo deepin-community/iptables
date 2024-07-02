@@ -1,0 +1,123 @@
+Description: Fix spelling mistakes
+ Corrections for several spelling mistakes, typo's and non-native usages in
+ man-pages and error-messages.
+Author: Jeremy Sowden <jeremy@azazel.net>
+Last-Update: 2023-12-11
+Forwarded: https://lore.kernel.org/netfilter-devel/20231211140848.2960686-1-jeremy@azazel.net/
+Applied-upstream: commit:73639a4f7af200c30d2f716a9956156800737165
+
+--- a/extensions/libxt_DNAT.man
++++ b/extensions/libxt_DNAT.man
+@@ -19,7 +19,7 @@
+ modified. If no IP address is specified then only the destination port
+ will be modified.
+ If \fBbaseport\fP is given, the difference of the original destination port and
+-its value is used as offset into the mapping port range. This allows to create
++its value is used as offset into the mapping port range. This allows one to create
+ shifted portmap ranges and is available since kernel version 4.18.
+ For a single port or \fIbaseport\fP, a service name as listed in
+ \fB/etc/services\fP may be used.
+--- a/extensions/libxt_TOS.man
++++ b/extensions/libxt_TOS.man
+@@ -32,5 +32,5 @@
+ a bug whereby IPv6 TOS mangling does not behave as documented and differs from
+ the IPv4 version. The TOS mask indicates the bits one wants to zero out, so it
+ needs to be inverted before applying it to the original TOS field. However, the
+-aformentioned kernels forgo the inversion which breaks \-\-set\-tos and its
++aforementioned kernels forgo the inversion which breaks \-\-set\-tos and its
+ mnemonics.
+--- a/extensions/libxt_multiport.c
++++ b/extensions/libxt_multiport.c
+@@ -248,7 +248,7 @@
+ static void multiport_check(struct xt_fcheck_call *cb)
+ {
+ 	if (cb->xflags == 0)
+-		xtables_error(PARAMETER_PROBLEM, "multiport expection an option");
++		xtables_error(PARAMETER_PROBLEM, "no ports specified");
+ }
+ 
+ static const char *
+--- a/extensions/libxt_set.h
++++ b/extensions/libxt_set.h
+@@ -146,7 +146,7 @@
+ 			info->u.flags[i++] |= IPSET_DST;
+ 		else
+ 			xtables_error(PARAMETER_PROBLEM,
+-				"You must spefify (the comma separated list of) 'src' or 'dst'.");
++				"You must specify (the comma separated list of) 'src' or 'dst'.");
+ 	}
+ 
+ 	if (tmp)
+@@ -170,7 +170,7 @@
+ 			info->flags |= (1 << info->dim);
+ 		else if (strncmp(ptr, "dst", 3) != 0)
+ 			xtables_error(PARAMETER_PROBLEM,
+-				"You must spefify (the comma separated list of) 'src' or 'dst'.");
++				"You must specify (the comma separated list of) 'src' or 'dst'.");
+ 	}
+ 
+ 	if (tmp)
+--- a/iptables/arptables-nft.8
++++ b/iptables/arptables-nft.8
+@@ -195,7 +195,7 @@
+ .B arptables
+ kernel table.
+ 
+-.SS MISCELLANOUS COMMANDS
++.SS MISCELLANEOUS COMMANDS
+ .TP
+ .B "-V, --version"
+ Show the version of the arptables userspace program.
+--- a/iptables/ebtables-nft.8
++++ b/iptables/ebtables-nft.8
+@@ -321,7 +321,7 @@
+ .TP
+ .B "--init-table"
+ Replace the current table data by the initial table data.
+-.SS MISCELLANOUS COMMANDS
++.SS MISCELLANEOUS COMMANDS
+ .TP
+ .B "-v, --verbose"
+ Verbose mode.
+@@ -812,7 +812,7 @@
+ .TP
+ .B "--log"
+ .br
+-Log with the default loggin options: log-level=
++Log with the default logging options: log-level=
+ .IR info ,
+ log-prefix="", no ip logging, no arp logging.
+ .TP
+--- a/iptables/nft-arp.c
++++ b/iptables/nft-arp.c
+@@ -513,7 +513,7 @@
+ 
+ 		if (cs->arp.arp.arhln != 6)
+ 			xtables_error(PARAMETER_PROBLEM,
+-				      "Only harware address length of 6 is supported currently.");
++				      "Only hardware address length of 6 is supported currently.");
+ 	}
+ 	if (args->arp_opcode) {
+ 		if (get16_and_mask(args->arp_opcode, &cs->arp.arp.arpop,
+--- a/iptables/xtables-monitor.8.in
++++ b/iptables/xtables-monitor.8.in
+@@ -43,7 +43,7 @@
+ .PP
+ The first line shows a packet entering rule set evaluation.
+ The protocol number is shown (AF_INET in this case), then a packet
+-identifier number that allows to correlate messages coming from rule set evaluation of
++identifier number that allows one to correlate messages coming from rule set evaluation of
+ this packet.  After this, the rule that was matched by the packet is shown.
+ This is the TRACE rule that turns on tracing events for this packet.
+ 
+--- a/utils/nfnl_osf.8.in
++++ b/utils/nfnl_osf.8.in
+@@ -16,7 +16,7 @@
+ .SH DESCRIPTION
+ The
+ .B nfnl_osf
+-utility allows to load a set of operating system signatures into the kernel for
++utility allows one to load a set of operating system signatures into the kernel for
+ later matching against using iptables'
+ .B osf
+ match.
