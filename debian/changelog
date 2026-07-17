@@ -1,3 +1,29 @@
+iptables (1.8.11-2) unstable; urgency=medium
+
+  * [91cce2c] d/patches: add patch to fix `-C` commands (Closes: #1087210)
+  * [3b059f3] d/t/control: update restrictions
+  * [d9b8a1b] d/tests: run shell test-suite
+  * [09bd943] d/tests: run Python test-suite
+  * [55d3615] d/p/translation-test-fixes.patch: add upstream commit ID
+  * [079426e] d/p/fix-interface-comparisons.patch: update patch to the
+    version committed upstream
+
+ -- Jeremy Sowden <azazel@debian.org>  Wed, 20 Nov 2024 09:03:53 +0000
+
+iptables (1.8.11-1) unstable; urgency=medium
+
+  * [e500d5e] d/watch: use substitution variables
+  * [0c98480] d/watch: enable pgp signatures
+  * [365d149] d/upstream: add signing-key.asc
+  * [64f15b8] New upstream version 1.8.11
+  * [74bf869] d/patches: drop upstreamed patches
+  * [ac46cd1] d/control: bump Standards-Version to 4.7.0
+  * [a084ddc] d/patches: add patch to fix translation test-failures
+  * [f786ea7] d/libxtables12.symbols: add new symbol
+  * [853dbe5] d/u/signing-key.asc: minimize key
+
+ -- Jeremy Sowden <azazel@debian.org>  Fri, 08 Nov 2024 18:13:41 +0000
+
 iptables (1.8.10-4) unstable; urgency=medium
 
   * [4b0a06f] d/p/ebtables-noflush-restore-fix.patch: add DEP-3 metadata

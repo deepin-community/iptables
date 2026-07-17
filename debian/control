@@ -12,7 +12,7 @@ Build-Depends: debhelper-compat (= 13),
                libnftnl-dev (>= 1.1.6),
                netbase (>= 6.0),
                python3:native <!nocheck>
-Standards-Version: 4.6.2
+Standards-Version: 4.7.0
 Rules-Requires-Root: no
 Homepage: https://www.netfilter.org/
 Vcs-Git: https://salsa.debian.org/pkg-netfilter-team/pkg-iptables.git
